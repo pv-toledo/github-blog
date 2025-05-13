@@ -64,6 +64,11 @@ export const GithubLink = styled.a`
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    transition: border-bottom 0.2s;
+
+    &:hover {
+        border-bottom: 2px solid ${props => props.theme.blue};
+    }
 
     #arrowUp {
         color: ${props => props.theme.blue};
