@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalTheme = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
         padding: 0;
@@ -10,6 +10,7 @@ export const GlobalTheme = createGlobalStyle`
     body {
         background-color: ${props => props.theme["base-background"]};
         -webkit-font-smoothing: antialiased;
+        color: ${props => props.theme["base-text"]};
     }
 
     body, input, textarea, button {
