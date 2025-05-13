@@ -16,7 +16,7 @@ export function MainContentBox() {
 
                         <GithubLink href="http://www.google.com">
                             <span>GITHUB</span>
-                            <FontAwesomeIcon icon={faArrowUpRightFromSquare} id="arrowUp"/>
+                            <FontAwesomeIcon icon={faArrowUpRightFromSquare} id="arrowUp" />
                         </GithubLink>
 
                     </TextHeaderContainer>
@@ -26,7 +26,7 @@ export function MainContentBox() {
                     <InfoBar>
                         <div>
                             <FontAwesomeIcon icon={faGithub} />
-                            <span>Rocketseat</span>
+                            <span>pv-toledo</span>
                         </div>
 
                         <div>
