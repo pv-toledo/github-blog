@@ -19,10 +19,10 @@ export const PostContent = styled.div`
     padding: 2rem;
     background-color: ${props => props.theme["base-post"]};
     border-radius: 10px;
-    transition: all 0.2s;
     border: 2px solid transparent;
 
     &:hover {
+        transition: all 0.2s;
         border: 2px solid ${props => props.theme["base-label"]};
     }
 
