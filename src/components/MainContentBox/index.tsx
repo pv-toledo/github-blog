@@ -14,7 +14,7 @@ export function MainContentBox() {
 
                         <span>Paulo Vinícius Toledo</span>
 
-                        <GithubLink href="http://www.google.com">
+                        <GithubLink href="">
                             <span>GITHUB</span>
                             <FontAwesomeIcon icon={faArrowUpRightFromSquare} id="arrowUp" />
                         </GithubLink>

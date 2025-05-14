@@ -64,10 +64,13 @@ export const GithubLink = styled.a`
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    transition: border-bottom 0.2s;
+    border-bottom: 2px solid transparent;
+    
 
     &:hover {
+        transition: border-bottom 0.2s;
         border-bottom: 2px solid ${props => props.theme.blue};
+        cursor: pointer;
     }
 
     #arrowUp {
