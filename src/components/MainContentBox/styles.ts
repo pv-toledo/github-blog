@@ -88,6 +88,7 @@ export const GithubLink = styled.a`
 
 export const InfoBar = styled.div`
     display: flex;
+    margin-top: auto;
     gap: 1.5rem;
 
     div {

@@ -8,7 +8,7 @@ export function PostInfo () {
         <MainContentBoxPost>
             <BoxHeader>
                 
-                <HeaderLink href="">
+                <HeaderLink href="/">
                     <FontAwesomeIcon icon={faChevronLeft} id="back" />
                     <span>VOLTAR</span>
                 </HeaderLink>
