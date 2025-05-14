@@ -7,7 +7,7 @@ export const SearchFormContainer = styled.div`
     gap: 0.75rem;
     width: 864px;
     align-self: center;
-
+    margin-bottom: 3rem;
 
     div {
         display: flex;
