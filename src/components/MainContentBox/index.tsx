@@ -23,7 +23,6 @@ export function MainContentBox() {
 
     async function getUserData(user: string) {
         const response = await api.get(`/users/${user}`)
-        console.log(response.data)
         const { avatar_url, name, html_url, bio, login, company, followers } = response.data
         setUserData(
             {
