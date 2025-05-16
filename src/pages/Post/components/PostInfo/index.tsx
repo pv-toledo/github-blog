@@ -2,8 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BottomLinks, BoxHeader, HeaderLink, MainContentBoxPost } from "./styles";
 import { faArrowUpRightFromSquare, faCalendarDay, faChevronLeft, faComment } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import type { IssueType } from "../..";
+import { dateFormatter } from "../../../../utils/formatter";
 
-export function PostInfo () {
+interface PostInfoProps {
+    issue: IssueType
+}
+
+export function PostInfo ({issue}: PostInfoProps) {
     return (
         <MainContentBoxPost>
             <BoxHeader>
@@ -13,7 +19,7 @@ export function PostInfo () {
                     <span>VOLTAR</span>
                 </HeaderLink>
 
-                <HeaderLink href="">
+                <HeaderLink href={issue.issueHtmlUrl}>
                     <span>VER NO GITHUB</span>
                     <FontAwesomeIcon icon={faArrowUpRightFromSquare} id="arrowUp" />
                 </HeaderLink>
@@ -21,23 +27,23 @@ export function PostInfo () {
             </BoxHeader>
 
             <p>
-                JavaScript data types and data structures
+                {issue.title}
             </p>
 
             <BottomLinks>
                 <div>
                     <FontAwesomeIcon icon={faGithub} id="githubIcon" />
-                    <span>pv-toledo</span>
+                    <span>{issue.user.login}</span>
                 </div>
 
                 <div>
                     <FontAwesomeIcon icon={faCalendarDay} id="calendar" />
-                    <span>Há 1 dia</span>
+                    <span>{dateFormatter(issue.createdAt)}</span>
                 </div>
 
                 <div>
                     <FontAwesomeIcon icon={faComment} id="comment" />
-                    <span>5 comentários</span>
+                    <span>{issue.comments} comentários</span>
                 </div>
             </BottomLinks>
         </MainContentBoxPost>

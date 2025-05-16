@@ -2,17 +2,15 @@ import { useEffect, useState } from "react";
 import { api } from "../../../../lib/axios";
 import { PostContent, PostsContainer } from "./styles";
 import { dateFormatter } from "../../../../utils/formatter";
- 
+
 
 interface PostsType {
     id: number
     title: string
     body: string
     created_at: string
-    comments: number
-    user: {
-        login: string
-    }
+    postUrl: string
+    
 }
 
 export function Posts() {
@@ -26,11 +24,8 @@ export function Posts() {
             id: item.id,
             title: item.title,
             body: item.body,
-            comments: item.comments,
             created_at: item.created_at,
-            user: {
-                login: item.user.login
-            }
+            postUrl: `/post/${item.number}`,
         }))
 
         setPosts(postsArray)
@@ -44,7 +39,8 @@ export function Posts() {
         <PostsContainer>
 
             {posts.map(post => (
-                <PostContent key={post.id} href="https:google.com" target="_blank" rel="noopener noreferrer">
+
+                <PostContent key={post.id} to={post.postUrl}>
                     <div>
                         <p>{post.title}</p>
                         <span>{dateFormatter(post.created_at)}</span>
@@ -54,6 +50,7 @@ export function Posts() {
                         <p>{post.body}</p>
                     </div>
                 </PostContent>
+
             ))}
 
         </PostsContainer>

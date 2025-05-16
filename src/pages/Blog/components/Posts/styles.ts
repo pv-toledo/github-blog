@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const PostsContainer = styled.div`
@@ -9,7 +10,7 @@ export const PostsContainer = styled.div`
     margin-bottom: 14.625rem;
 `
 
-export const PostContent = styled.a`
+export const PostContent = styled(Link)`
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
