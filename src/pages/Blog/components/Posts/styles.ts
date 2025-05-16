@@ -9,7 +9,7 @@ export const PostsContainer = styled.div`
     margin-bottom: 14.625rem;
 `
 
-export const PostContent = styled.div`
+export const PostContent = styled.a`
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -20,10 +20,12 @@ export const PostContent = styled.div`
     background-color: ${props => props.theme["base-post"]};
     border-radius: 10px;
     border: 2px solid transparent;
+    text-decoration: none;
 
     &:hover {
         transition: all 0.2s;
         border: 2px solid ${props => props.theme["base-label"]};
+        cursor: pointer;
     }
 
     div {
@@ -43,6 +45,7 @@ export const PostContent = styled.div`
             color: ${props => props.theme["base-span"]};
             line-height: 160%;
             min-width: 53px;
+            text-align: center;
         }
     }
 
