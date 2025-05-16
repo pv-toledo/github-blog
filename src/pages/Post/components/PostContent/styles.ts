@@ -1,3 +1,4 @@
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import styled from "styled-components";
 
 export const PostContentContainer = styled.main`
@@ -25,8 +26,10 @@ export const CodeContent = styled.div`
     flex-direction: column;
     gap: 0.5rem;
     
-    p {
-        color: ${props => props.theme["base-text"]};
-        line-height: 160%;
+    line-height: 160%;
+
+    code span {
+         text-shadow: none !important;
     }
+
 `

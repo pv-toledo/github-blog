@@ -56,7 +56,9 @@ export function Post() {
             <PostInfo
                 issue={issue}
             />
-            <PostContent />
+            <PostContent
+                body={issue.body}
+            />
         </PostsContainer>
 
     )
