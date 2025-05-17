@@ -14,11 +14,11 @@ export interface PostsType {
     number: number
 }
 
-
 export function Blog() {
 
     const [posts, setPosts] = useState<PostsType[]>([])
     const [query, setQuery] = useState<string>('')
+    const [size, setSize] = useState<number>(0)
 
 
     async function getPosts(query: string) {
@@ -31,6 +31,7 @@ export function Blog() {
                 created_at: item.created_at,
                 postUrl: `/post/${item.number}`,
             }))
+            setSize(response.data.total_count)
             setPosts(postsArray)
 
         } else {
@@ -42,10 +43,9 @@ export function Blog() {
                 created_at: item.created_at,
                 postUrl: `/post/${item.number}`,
             }))
-
+            setSize(response.data.total_count)
             setPosts(postsArray)
         }
-
     }
 
     useEffect(() => {
@@ -57,6 +57,7 @@ export function Blog() {
             <MainContentBox />
             <SearchForm
                 setQuery={setQuery}
+                size={size}
             />
             <Posts
                 posts={posts}

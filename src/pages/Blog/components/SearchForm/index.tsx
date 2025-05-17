@@ -7,8 +7,8 @@ import type React from "react";
 
 interface SearchFormProps {
     setQuery: React.Dispatch<React.SetStateAction<string>>
+    size: number
 }
-
 
 const searchFormSchema = z.object({
     query: z.string()
@@ -17,9 +17,7 @@ const searchFormSchema = z.object({
 type searchFormInputs = z.infer<typeof searchFormSchema>
 
 
-export function SearchForm({setQuery}: SearchFormProps) {
-
-    
+export function SearchForm({setQuery, size}: SearchFormProps) {
 
     const { register, handleSubmit } = useForm<searchFormInputs>({
         resolver: zodResolver(searchFormSchema)
@@ -34,7 +32,7 @@ export function SearchForm({setQuery}: SearchFormProps) {
         <SearchFormContainer>
             <div>
                 <p>Publicações</p>
-                <span>6 publicações</span>
+                <span>{size} publicações</span>
             </div>
             <div>
                 <form onSubmit={handleSubmit(handleFormSubmit)}>
