@@ -1,9 +1,13 @@
 import { SearchFormContainer } from "./styles";
 import * as z from 'zod'
-import {useForm} from 'react-hook-form'
-import {zodResolver} from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { queryFormatter } from "../../../../utils/formatter";
-import { api } from "../../../../lib/axios";
+import type React from "react";
+
+interface SearchFormProps {
+    setQuery: React.Dispatch<React.SetStateAction<string>>
+}
 
 
 const searchFormSchema = z.object({
@@ -13,19 +17,18 @@ const searchFormSchema = z.object({
 type searchFormInputs = z.infer<typeof searchFormSchema>
 
 
-export function SearchForm() {
+export function SearchForm({setQuery}: SearchFormProps) {
 
-    const {register, handleSubmit, reset} = useForm<searchFormInputs>({
+    
+
+    const { register, handleSubmit } = useForm<searchFormInputs>({
         resolver: zodResolver(searchFormSchema)
     })
 
-    async function handleFormSubmit (data: searchFormInputs) {
-    const searchQuery = queryFormatter(data.query)
-    const response = await api.get(`/search/issues?q=${searchQuery}repo:pv-toledo/github-blog`)
-    console.log(response.data)
-    
-    reset()
-}
+    async function handleFormSubmit(data: searchFormInputs) {
+        const searchQuery = queryFormatter(data.query)
+        setQuery(searchQuery)
+    }
 
     return (
         <SearchFormContainer>
@@ -35,8 +38,8 @@ export function SearchForm() {
             </div>
             <div>
                 <form onSubmit={handleSubmit(handleFormSubmit)}>
-                    <input 
-                        type="text" 
+                    <input
+                        type="text"
                         placeholder="Buscar conteúdo"
                         {...register('query')}
                     />

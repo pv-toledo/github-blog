@@ -14,32 +14,51 @@ export interface PostsType {
     number: number
 }
 
+
 export function Blog() {
 
     const [posts, setPosts] = useState<PostsType[]>([])
+    const [query, setQuery] = useState<string>('')
 
-    async function getPosts() {
-        const response = await api.get(`search/issues?q=repo:pv-toledo/github-blog`)
-        const postsArray = response.data.items.map((item: PostsType) => ({
-            id: item.id,
-            title: item.title,
-            body: item.body,
-            created_at: item.created_at,
-            postUrl: `/post/${item.number}`,
-        }))
 
-        setPosts(postsArray)
+    async function getPosts(query: string) {
+        if (query) {
+            const response = await api.get(`/search/issues?q=${query}repo:pv-toledo/github-blog`)
+            const postsArray = response.data.items.map((item: PostsType) => ({
+                id: item.id,
+                title: item.title,
+                body: item.body,
+                created_at: item.created_at,
+                postUrl: `/post/${item.number}`,
+            }))
+            setPosts(postsArray)
+
+        } else {
+            const response = await api.get(`search/issues?q=repo:pv-toledo/github-blog`)
+            const postsArray = response.data.items.map((item: PostsType) => ({
+                id: item.id,
+                title: item.title,
+                body: item.body,
+                created_at: item.created_at,
+                postUrl: `/post/${item.number}`,
+            }))
+
+            setPosts(postsArray)
+        }
+
     }
 
     useEffect(() => {
-        getPosts()
-    }, [])
+        getPosts(query)
+    }, [query])
 
     return (
         <BlogContainer>
             <MainContentBox />
-            <SearchForm />
-            <Posts 
+            <SearchForm
+                setQuery={setQuery}
+            />
+            <Posts
                 posts={posts}
             />
         </BlogContainer>
