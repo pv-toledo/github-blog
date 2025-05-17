@@ -11,7 +11,7 @@ export interface PostsType {
     body: string
     created_at: string
     postUrl: string
-    
+    number: number
 }
 
 export function Blog() {
@@ -20,7 +20,7 @@ export function Blog() {
 
     async function getPosts() {
         const response = await api.get(`search/issues?q=repo:pv-toledo/github-blog`)
-        const postsArray = response.data.items.map((item: any) => ({
+        const postsArray = response.data.items.map((item: PostsType) => ({
             id: item.id,
             title: item.title,
             body: item.body,

@@ -13,7 +13,7 @@ export function dateFormatter (date: string) {
 
 export function splitMarkdownByCodeBlocks(markdown: string) {
   const result = []
-  let remaining = markdown
+  // let remaining = markdown
   const codeBlockRegex = /```(\w*)\n([\s\S]*?)```/g
 
   let lastIndex = 0
@@ -49,4 +49,10 @@ export function splitMarkdownByCodeBlocks(markdown: string) {
   }
 
   return result
+}
+
+export function queryFormatter(data: string) {
+  const formatted = data.replace(/ /g, "%20");
+  // se já terminar em `%20`, retorna igual; caso contrário, adiciona `%20` no fim
+  return formatted.endsWith("%20") ? formatted : formatted + "%20";
 }
